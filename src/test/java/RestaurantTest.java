@@ -67,15 +67,16 @@ class RestaurantTest {
 
     @Test
     public void total_order_should_return_sum_of_all_items_added() {
-        List<Item> listItems = restaurant.getAddeditems();
-        int sumOfAllItems = restaurant.getSumOfAllItems(listItems);
-        assertNotEquals(0,sumOfAllItems);
+        restaurant.addToMenu("Sizzling brownie",319);
+        restaurant.addToMenu("Tangy tomatoes",280);
+        restaurant.addSelectedItems("Sizzling brownie");
+        int sumOfAllItems = restaurant.getSumOfAllItems();
+        assertEquals(319,sumOfAllItems);
     }
 
     @Test
     public void total_order_should_return_zero_if_no_items_added() {
-        List<Item> listItems = restaurant.getAddeditems();
-        int sumOfAllItems = restaurant.getSumOfAllItems(listItems);
+        int sumOfAllItems = restaurant.getSumOfAllItems();
         assertEquals(0,sumOfAllItems);
     }
 }

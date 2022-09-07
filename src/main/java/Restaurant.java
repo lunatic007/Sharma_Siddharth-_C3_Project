@@ -9,6 +9,7 @@ public class Restaurant {
     public LocalTime openingTime;
     public LocalTime closingTime;
     private List<Item> menu = new ArrayList<Item>();
+    private List<Item> selectedItems = new ArrayList<Item>();
 
     public Restaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         this.name = name;
@@ -64,4 +65,19 @@ public class Restaurant {
         return name;
     }
 
+    public void addSelectedItems(String itemName) {
+        for (Item item : menu) {
+            if (item.getName().equals(itemName)) {
+                selectedItems.add(item);
+            }
+        }
+    }
+
+    public int getSumOfAllItems() {
+        int sum = 0;
+        for (Item item : selectedItems) {
+            sum = sum + item.getPrice();
+        }
+        return sum;
+    }
 }
